@@ -406,7 +406,7 @@
                 <h1>Twitter Clone</h1>
             </div>
         </div>
-        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+        <div class="hidden fixed top-0 px-6 py-4 sm:block">
             @auth
             <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
             @else
