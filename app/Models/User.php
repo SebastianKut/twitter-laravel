@@ -50,8 +50,23 @@ class User extends Authenticatable
 
     public function timeline()
     {
-        return Tweet::where('user_id', $this->id)->latest()->get();
+        //return tweets of the user and his idols (people user follows)
+
+        $ids = $this->idols()->pluck('idol_user_id');   // array of idols ids
+        $ids->push($this->id);                         // add user id to the array
+
+        return Tweet::whereIn('user_id', $ids)->latest()->get();
     }
+
+
+    //To call function that relates to eloquent like below you can call 'User::find(1)->tweets' which will return all tweets. This happens through magic function specific to laravel
+    // If you call tweets(), this will invoke query builder so you can do something like: only return body of a tweet: 'User::find(1)->tweets()->pluck('body')'
+
+    public function tweets()
+    {
+        return $this->hasMany(Tweet::class);
+    }
+
 
     public function follow(User $user)
     {

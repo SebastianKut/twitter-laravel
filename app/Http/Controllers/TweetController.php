@@ -7,6 +7,14 @@ use App\Models\Tweet;
 
 class TweetController extends Controller
 {
+
+      public function index()
+    {
+        return view('home', [
+            'tweets' => auth()->user()->timeline()
+        ]);
+    }
+
     public function store()
     {
         //validation
@@ -21,6 +29,6 @@ class TweetController extends Controller
         ]);
 
         //redirect
-        return redirect('/home');
+        return redirect('/tweets');
     }
 }
