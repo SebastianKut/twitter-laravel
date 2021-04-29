@@ -405,6 +405,7 @@
             <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                 <h1>Twitter Clone</h1>
             </div>
+            @yield('content')
         </div>
         <div class="hidden fixed top-0 px-6 py-4 sm:block">
             @auth

@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<header>
-    {{$user->name}}
-</header>
-@include('_timeline', [
-'tweets' => $user->tweets
-])
+<div class="lg:flex-1">
+    @include('_profile-header', [
+    'user' => $user
+    ])
+    @include('_timeline', [
+    'tweets' => $user->tweets
+    ])
+</div>
 @endsection
 
-{{-- finished at 10 mins vid number 60 --}}
+{{-- finished @ vid number 61 --}}

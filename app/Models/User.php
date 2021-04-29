@@ -41,10 +41,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-// Creating custom accesor function that we can call its value from the view for example {{$tweet->user->avatar}}
-    public function getAvatarAttribute()
+    // Creating custom accesor function that we can call its value from the view for example {{$tweet->user->avatar}}, Laravel will know to call this function when called $tweet->user->avatar
+    public function getAvatarAttribute($size)
     {
-        return 'https://i.pravatar.cc/50?u=' . $this->email;
+        return 'https://i.pravatar.cc/200?u=' . $this->email;
     }
 
 
@@ -80,11 +80,10 @@ class User extends Authenticatable
 
     public function idols()
     {
-       //Belongs to many because eventhough User doesnt have idol_id technicaly idol_id is just another users id (this is kinda weird case)
-       //Normaly belongsToMany is used when table has foreign key for example posts table has user_id
-       //instead of idols this pivot table could be called user_user but it wouldnt make much sense in this case. Thats how laravel by default looks for those tables, but in this case I am explicit calling it 'idols'
+        //Belongs to many because eventhough User doesnt have idol_id technicaly idol_id is just another users id (this is kinda weird case)
+        //Normaly belongsToMany is used when table has foreign key for example posts table has user_id
+        //instead of idols this pivot table could be called user_user but it wouldnt make much sense in this case. Thats how laravel by default looks for those tables, but in this case I am explicit calling it 'idols'
         return $this->belongsToMany(User::class, 'idols', 'user_id', 'idol_user_id');
-
     }
 
     // To get followers for user its just opposite relationship of showing by idol_user_id
@@ -97,6 +96,4 @@ class User extends Authenticatable
     {
         return 'name';
     }
-
-
 }
