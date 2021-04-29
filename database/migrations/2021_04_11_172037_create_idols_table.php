@@ -34,3 +34,14 @@ class CreateIdolsTable extends Migration
         Schema::dropIfExists('idols');
     }
 }
+
+//In case of problems with XAMPP 
+//host:       '192.168.64.2',
+//user:       'username',
+//password:   'password',
+//Create user and flush privilages
+// CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+// GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
+// CREATE USER 'username'@'%' IDENTIFIED BY 'password';
+// GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' WITH GRANT OPTION;
+// FLUSH PRIVILEGES;
