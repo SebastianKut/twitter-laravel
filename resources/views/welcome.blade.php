@@ -410,11 +410,17 @@
         <div class="hidden fixed top-0 px-6 py-4 sm:block">
             @auth
             <a href="{{ route('home') }}" class="text-sm text-gray-700 underline">Home</a>
+            <a href="#" class="text-sm text-gray-700 underline" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                Log out</a>
             @else
             <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
             @endauth
         </div>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
     </div>
 </body>
 
