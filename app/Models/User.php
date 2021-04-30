@@ -67,7 +67,6 @@ class User extends Authenticatable
         return $this->hasMany(Tweet::class);
     }
 
-
     public function follow(User $user)
     {
         return $this->idols()->attach($user);
@@ -76,6 +75,20 @@ class User extends Authenticatable
     public function unfollow(User $user)
     {
         return $this->idols()->detach($user);
+    }
+
+    public function isFollowing(User $user)
+    {
+        return $this->idols()->where('idol_user_id', $user->id)->exists();
+    }
+
+    public function toggleFollow(User $user)
+    {
+        if ($this->isFollowing($user)) {
+            return $this->unfollow($user);
+        }
+
+        return $this->follow($user);
     }
 
     public function idols()
@@ -92,8 +105,8 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'idols', 'idol_user_id', 'user_id');
     }
 
-    public function getRouteKeyName()
-    {
-        return 'name';
-    }
+    // public function getRouteKeyName()
+    // {
+    //     return 'name';
+    // }
 }
