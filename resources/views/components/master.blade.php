@@ -22,12 +22,8 @@
 </head>
 
 <body>
-    <div id="app">
-        <section class="px-8 py-4">
-            <header class="container mx-auto my-6">
-                <img class="w-20" src="/images/twitter-logo.png" alt="logo">
-            </header>
-        </section>
+    <div id="app" class="py-8 px-20">
+
 
         {{$slot}}
 

@@ -1,10 +1,11 @@
 <div class="lg:mx-10 mb-6">
     <header class="mb-2 relative">
         <img class="rounded-lg" src="/images/twitter-header.jpg" alt="">
-        <img src="{{$user->avatar}}" alt="" class="rounded-full mr-2 absolute" style="
-            bottom: -18%;
-            left: calc(50% - 75px);
-            width: 150px;
+        <img src="{{$user->avatar}}" alt=""
+            class="rounded-full mr-2 absolute transform -translate-x-1/2 translate-y-1/2" style="
+            bottom: 0;
+            left:50%;
+            width: 13%;
             ">
     </header>
     <div class="flex justify-between items-center mb-6">
