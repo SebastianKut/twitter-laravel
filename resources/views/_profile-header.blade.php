@@ -14,12 +14,23 @@
             <p class="text-sm">Joined {{$user->created_at->diffForHumans()}}</p>
         </div>
         <div class="flex">
-            <a href="" class="rounded-full shadow p-2 text-black text-xs mr-3">Edit Profile</a>
+
+            {{-- We can use @can to make conditional rendering of the Edit Profile button because we applied edit authorisation policy in UserPolicy --}}
+            @can('edit', $user)
+            <a href={{route('profile/edit', auth()->user()->name)}}
+                class="rounded-full shadow p-2 text-black text-xs mr-3">Edit
+                Profile</a>
+            @endcan
+
+            @if ( auth()->user()->isNot($user) )
             <form action="/profile/{{$user->name}}/follow" method="POST">
                 @csrf
                 <button type="submit" class="bg-blue-500 rounded-full shadow p-2 text-white text-xs">
                     {{auth()->user()->isFollowing($user) ? 'Unfollow Me' : 'Follow Me'}}
                 </button>
+            </form>
+            @endif
+
         </div>
     </div>
     <p class="text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod sit, accusantium perferendis

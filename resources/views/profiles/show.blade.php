@@ -8,4 +8,4 @@
         ])
     </div>
 </x-app>
-{{-- finished @ vid number 61 CSS section --}}
+{{-- strat from vid number 64 --}}

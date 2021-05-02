@@ -18,9 +18,16 @@ Route::get('/', function () {
 });
 // When you put {user:name} in the wildcard and not just {user} it tells laravel to serach by name column and not default id column
 Route::middleware('auth')->group(function () {
+
     Route::post('/tweets', [App\Http\Controllers\TweetController::class, 'store']);
+
     Route::get('/tweets', [App\Http\Controllers\TweetController::class, 'index'])->name('home');
+
     Route::get('/profile/{user:name}', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile');
+
+    Route::get('/profile/{user:name}/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile/edit')
+        ->middleware('can:edit,user'); //syntax is middleware(can:functionNameFromUserPolicy,{wildcard})
+
     Route::post('/profile/{user:name}/follow', [App\Http\Controllers\FollowController::class, 'store']);
 });
 
