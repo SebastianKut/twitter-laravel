@@ -18,18 +18,18 @@
             {{-- We can use @can to make conditional rendering of the Edit Profile button because we applied edit authorisation policy in UserPolicy --}}
             @can('edit', $user)
             <a href={{route('profile/edit', auth()->user()->name)}}
-                class="rounded-full shadow p-2 text-black text-xs mr-3">Edit
-                Profile</a>
+                class="rounded-full shadow p-2 text-black text-xs mr-3">Edit Profile</a>
             @endcan
 
-            @if ( auth()->user()->isNot($user) )
+            @can('follow', $user)
             <form action="/profile/{{$user->name}}/follow" method="POST">
                 @csrf
                 <button type="submit" class="bg-blue-500 rounded-full shadow p-2 text-white text-xs">
                     {{auth()->user()->isFollowing($user) ? 'Unfollow Me' : 'Follow Me'}}
                 </button>
             </form>
-            @endif
+            @endcan
+
 
         </div>
     </div>
