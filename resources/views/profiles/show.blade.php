@@ -8,4 +8,5 @@
         ])
     </div>
 </x-app>
-{{-- strat from vid number 64 at 3.23 --}}
+{{-- strat from vid number 64 at 9min (avatar upload)
+    also check why form only shows first name--}}
