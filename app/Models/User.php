@@ -44,9 +44,9 @@ class User extends Authenticatable
     ];
 
     // Creating custom accesor function that we can call its value from the view for example {{$tweet->user->avatar}}, Laravel will know to call this function when called $tweet->user->avatar
-    public function getAvatarAttribute($size)
+    public function getAvatarAttribute($value)
     {
-        return 'https://i.pravatar.cc/200?u=' . $this->email;
+        return asset($value);
     }
 
 

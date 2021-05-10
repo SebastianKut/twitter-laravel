@@ -8,5 +8,7 @@
         ])
     </div>
 </x-app>
-{{-- strat from vid number 64 at 9min (avatar upload)
-    also check why form only shows first name--}}
+{{-- start from vid number 64 at 9min (avatar upload)
+    also check;
+    *why form only shows first name
+    *it doesnt load avatar because it shows wrong path--}}

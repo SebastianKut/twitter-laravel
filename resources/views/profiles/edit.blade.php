@@ -1,6 +1,6 @@
 <x-app>
     <div class="lg:flex-1 px-40">
-        <form action={{route('profile/update', $user->username)}} method="POST">
+        <form action={{route('profile/update', $user->username)}} method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div class="mb-6">
@@ -24,6 +24,13 @@
                 <input type="email" name="email" id="email" value={{$user->email}} required
                     class="border border-gray-400 p-2 w-full">
                 @error('email')
+                <p class="text-red-500 text-xs mt-2">{{$message}}</p>
+                @enderror
+            </div>
+            <div class="mb-6">
+                <label for="avatar" class="block mb-2 uppercase font-bold text-xs text-gray-700">Avatar</label>
+                <input type="file" name="avatar" id="avatar" required class="border border-gray-400 p-2 w-full">
+                @error('avatar')
                 <p class="text-red-500 text-xs mt-2">{{$message}}</p>
                 @enderror
             </div>
