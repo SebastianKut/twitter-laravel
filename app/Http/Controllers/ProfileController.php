@@ -37,6 +37,9 @@ class ProfileController extends Controller
 
         $data['avatar'] = request('avatar')->store('avatars'); //this calls the laravel method from request called store and we pass location folder to the function.
         //This store function stores a file and returns a path where the image is stored (the path then can be saved to database)
+        //By default avatar will be stored in storage directory but I want to store it in public dir so in .env create FILESYSTEM_DRIVER=public
+        //That will put it in storage/app/public/avatars. Then to out it in oublic folder I have to create symlink by running 'php artisan storage:link' 
+
         $user->update($data);
         return redirect(route('profile', $user->username));
     }
