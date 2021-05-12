@@ -5,7 +5,7 @@
             @method('PATCH')
             <div class="mb-6">
                 <label for="name" class="block mb-2 uppercase font-bold text-xs text-gray-700">Name</label>
-                <input type="text" name="name" id="name" value={{$user->name}} required
+                <input type="text" name="name" id="name" value="{{$user->name}}" required
                     class="border border-gray-400 p-2 w-full">
                 @error('name')
                 <p class="text-red-500 text-xs mt-2">{{$message}}</p>
@@ -29,8 +29,16 @@
             </div>
             <div class="mb-6">
                 <label for="avatar" class="block mb-2 uppercase font-bold text-xs text-gray-700">Avatar</label>
-                <input type="file" name="avatar" id="avatar" required class="border border-gray-400 p-2 w-full">
+                <input type="file" name="avatar" id="avatar" class="border border-gray-400 p-2 w-full">
                 @error('avatar')
+                <p class="text-red-500 text-xs mt-2">{{$message}}</p>
+                @enderror
+            </div>
+            <div class="mb-6">
+                <label for="background_img" class="block mb-2 uppercase font-bold text-xs text-gray-700">Background
+                    image</label>
+                <input type="file" name="background_img" id="background_img" class="border border-gray-400 p-2 w-full">
+                @error('background_img')
                 <p class="text-red-500 text-xs mt-2">{{$message}}</p>
                 @enderror
             </div>

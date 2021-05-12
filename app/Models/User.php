@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -19,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'avatar',
+        'background_img',
         'name',
         'email',
         'password',
@@ -46,12 +48,30 @@ class User extends Authenticatable
     // Creating custom accesor function that we can call its value from the view for example {{$tweet->user->avatar}}, Laravel will know to call this function when called $tweet->user->avatar
     public function getAvatarAttribute($value)
     {
-        return asset('storage/' . $value);
+        //show avatar from database or else default avatar
+        if ($value) {
+            return asset('storage/' . $value);
+        }
+
+        return '/images/default_avatar.jpg';
     }
 
-    public function setPasswordAttribute($value)
+    public function getBackgroundImgAttribute($value)
     {
-        $this->attributes['password'] = bcrypt($value);
+
+        if ($value) {
+            return asset('storage/' . $value);
+        }
+
+        return '/images/default_bg.jpg';
+    }
+
+
+    //This mutator makes sure that when you edit profile and ask for password, then u update db with the password it hashes it
+    public function setPasswordAttribute($password)
+    {
+        //make sure that it does not rehash hashed passwords otherwise it will rehash hashed passoword when registering
+        $this->attributes['password'] = Hash::needsRehash($password) ? Hash::make($password) : $password;
     }
 
 

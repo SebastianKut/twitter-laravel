@@ -28,7 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/{user:username}/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile/edit')
         ->middleware('can:edit,user'); //syntax is middleware(can:functionNameFromUserPolicy,{wildcard})
 
-    Route::patch('/profile/{user:username}/edit', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile/update');
+    Route::patch('/profile/{user:username}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile/update')
+        ->middleware('can:edit,user');
 
     Route::post('/profile/{user:username}/follow', [App\Http\Controllers\FollowController::class, 'store'])
         ->middleware('can:follow,user');;

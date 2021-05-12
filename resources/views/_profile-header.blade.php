@@ -1,6 +1,6 @@
 <div class="lg:mx-10 mb-6">
     <header class="mb-2 relative">
-        <img class="rounded-lg" src="/images/twitter-header.jpg" alt="">
+        <img class="rounded-lg w-full" src={{$user->background_img}} alt="">
         <img src={{$user->avatar}} alt="" class="rounded-full mr-2 absolute transform -translate-x-1/2 translate-y-1/2"
             style="
             bottom: 0;
