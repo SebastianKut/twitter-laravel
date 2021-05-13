@@ -33,6 +33,10 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/profile/{user:username}/follow', [App\Http\Controllers\FollowController::class, 'store'])
         ->middleware('can:follow,user');;
+
+    Route::get('/explore', [App\Http\Controllers\ExploreController::class, 'index'])->name('explore');
 });
+
+
 
 Auth::routes();

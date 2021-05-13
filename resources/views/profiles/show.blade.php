@@ -8,7 +8,5 @@
         ])
     </div>
 </x-app>
-{{-- start from vid number 64 at 9min (avatar upload)
-    also check;
-    *why form only shows first name
+{{-- start from vid number 65 at 4.50min (avatar upload)
 --}}
