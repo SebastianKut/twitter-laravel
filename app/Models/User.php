@@ -49,11 +49,15 @@ class User extends Authenticatable
     public function getAvatarAttribute($value)
     {
         //show avatar from database or else default avatar
-        if ($value) {
-            return asset('storage/' . $value);
-        }
+        // if ($value) {
+        //     return asset('storage/' . $value);
+        // }
 
-        return '/images/default_avatar.jpg';
+        // return '/images/default_avatar.jpg';
+
+        //OR
+
+        return asset($value ? 'storage/' . $value : '/images/default_avatar.jpg');
     }
 
     public function getBackgroundImgAttribute($value)
