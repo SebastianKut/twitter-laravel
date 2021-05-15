@@ -86,7 +86,7 @@ class User extends Authenticatable
         $ids = $this->idols()->pluck('idol_user_id');   // array of idols ids
         $ids->push($this->id);                         // add user id to the array
 
-        return Tweet::whereIn('user_id', $ids)->latest()->get();
+        return Tweet::whereIn('user_id', $ids)->latest()->paginate(50);
     }
 
 

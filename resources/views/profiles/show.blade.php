@@ -4,9 +4,8 @@
         'user' => $user
         ])
         @include('_timeline', [
-        'tweets' => $user->tweets
+        'tweets' => $user->tweets()->paginate(50),
         ])
     </div>
 </x-app>
-{{-- start from vid number 65 at 4.50min (avatar upload)
---}}
+{{-- start from vid number 67 --}}
