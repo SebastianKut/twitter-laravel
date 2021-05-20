@@ -15,4 +15,24 @@ class Tweet extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    // accepting user but not requiring it by assigning $user = null
+    public function like($user = null, $liked = true)
+    {
+        return $this->likes()->updateOrCreate([
+            'user_id' => $user ? $user->id : auth()->id
+        ], [
+            'liked'   => $liked
+        ]);
+    }
+
+    public function dislike($user = null)
+    {
+        return $this->like($user, false);
+    }
 }
