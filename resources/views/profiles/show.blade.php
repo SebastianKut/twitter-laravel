@@ -8,4 +8,3 @@
         ])
     </div>
 </x-app>
-{{-- start from vid number 67 --}}

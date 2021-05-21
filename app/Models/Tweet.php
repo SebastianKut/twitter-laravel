@@ -35,4 +35,16 @@ class Tweet extends Model
     {
         return $this->like($user, false);
     }
+
+    public function isLikedBy(User $user)
+    {
+        return (bool) $user->likes->where('tweet_id', $this->id)->where('liked', true)->count();
+    }
+
+    public function isDislikedBy(User $user)
+    {
+        return (bool) $user->likes->where('tweet_id', $this->id)->where('liked', false)->count();
+    }
 }
+
+//start from 18mins video number 67

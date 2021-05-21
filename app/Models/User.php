@@ -136,6 +136,11 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'idols', 'idol_user_id', 'user_id');
     }
 
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
     // public function getRouteKeyName()
     // {
     //     return 'name';

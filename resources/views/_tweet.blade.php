@@ -14,5 +14,15 @@
         <p class="text-sm">
             {{$tweet->body}}
         </p>
+        <div class="flex">
+            <div class="mr-4 text-xs text-blue-500">
+                <i class="far fa-thumbs-up"></i>
+                <span>10</span>
+            </div>
+            <div class="mr-4 text-xs text-gray-500">
+                <i class="far fa-thumbs-down"></i>
+                <span>10</span>
+            </div>
+        </div>
     </div>
 </div>
