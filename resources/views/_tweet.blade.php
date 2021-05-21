@@ -15,13 +15,13 @@
             {{$tweet->body}}
         </p>
         <div class="flex">
-            <div class="mr-4 text-xs text-blue-500">
+            <div class="mr-4 text-xs {{$tweet->isLikedBy(auth()->user()) ? 'text-blue-500' : 'text-gray-500'}}">
                 <i class="far fa-thumbs-up"></i>
-                <span>10</span>
+                <span>{{$tweet->likes ?: '0'}}</span>
             </div>
-            <div class="mr-4 text-xs text-gray-500">
+            <div class="mr-4 text-xs {{$tweet->isDislikedBy(auth()->user()) ? 'text-blue-500' : 'text-gray-500'}}">
                 <i class="far fa-thumbs-down"></i>
-                <span>10</span>
+                <span>{{$tweet->dislikes ?: '0'}}</span>
             </div>
         </div>
     </div>
