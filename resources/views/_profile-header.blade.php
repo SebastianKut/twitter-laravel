@@ -1,12 +1,28 @@
 <div class="lg:mx-10 mb-6">
     <header class="mb-2 relative">
-        <img class="rounded-lg w-full" src={{$user->background_img}} alt="">
-        <img src={{$user->avatar}} alt="" class="rounded-full mr-2 absolute transform -translate-x-1/2 translate-y-1/2"
-            style="
-            bottom: 0;
-            left:50%;
-            width: 13%;
-            ">
+        @can('edit', $user)
+        <a href={{route('profile/edit', auth()->user()->username)}}>
+            <img class="rounded-lg w-full" src={{$user->background_img}} alt="">
+            <img src={{$user->avatar}} alt=""
+                class="rounded-full mr-2 absolute transform -translate-x-1/2 translate-y-1/2" style="
+                bottom: 0;
+                left:50%;
+                width: 13%;
+                ">
+        </a>
+        @else
+        <a href={{$user->background_img}}>
+            <img class="rounded-lg w-full" src={{$user->background_img}} alt="">
+        </a>
+        <a href={{$user->avatar}}>
+            <img src={{$user->avatar}} alt=""
+                class="rounded-full mr-2 absolute transform -translate-x-1/2 translate-y-1/2" style="
+                bottom: 0;
+                left:50%;
+                width: 13%;
+                ">
+        </a>
+        @endcan
     </header>
     <div class="flex justify-between items-center mb-6">
         <div style="max-width: 300px;">
@@ -33,7 +49,5 @@
 
         </div>
     </div>
-    <p class="text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod sit, accusantium perferendis
-        voluptatem cumque consequatur doloribus pariatur eius atque ducimus sapiente blanditiis velit non. Debitis ab
-        expedita obcaecati doloribus illum?</p>
+    <p class="text-sm">{{$user->description}}</p>
 </div>

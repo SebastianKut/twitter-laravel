@@ -33,6 +33,7 @@ class ProfileController extends Controller
             'email'             => ['string', 'required', 'email', 'max:255', Rule::unique('users')->ignore($user)],
             'avatar'            => ['file'],
             'background_img'    => ['file'],
+            'description'       => ['string', 'max:255'],
             'password'          => ['string', 'required', 'min:8', 'max:255', 'confirmed'],
         ]);
 

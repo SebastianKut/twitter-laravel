@@ -22,6 +22,7 @@ class User extends Authenticatable
         'avatar',
         'background_img',
         'name',
+        'description',
         'email',
         'password',
     ];
@@ -68,6 +69,12 @@ class User extends Authenticatable
         }
 
         return '/images/default_bg.jpg';
+    }
+
+    public function getDescriptionAttribute($value)
+    {
+
+        return $value ?: 'Hi there I am using twitter clone';
     }
 
 

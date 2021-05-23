@@ -13,7 +13,7 @@
             </div>
             <div class="mb-6">
                 <label for="username" class="block mb-2 uppercase font-bold text-xs text-gray-700">Username</label>
-                <input type="text" name="username" id="username" value={{$user->username}} required
+                <input type="text" name="username" id="username" value="{{$user->username}}" required
                     class="border border-gray-400 p-2 w-full">
                 @error('username')
                 <p class="text-red-500 text-xs mt-2">{{$message}}</p>
@@ -21,7 +21,7 @@
             </div>
             <div class="mb-6">
                 <label for="email" class="block mb-2 uppercase font-bold text-xs text-gray-700">Email</label>
-                <input type="email" name="email" id="email" value={{$user->email}} required
+                <input type="email" name="email" id="email" value="{{$user->email}}" required
                     class="border border-gray-400 p-2 w-full">
                 @error('email')
                 <p class="text-red-500 text-xs mt-2">{{$message}}</p>
@@ -39,6 +39,15 @@
                     image</label>
                 <input type="file" name="background_img" id="background_img" class="border border-gray-400 p-2 w-full">
                 @error('background_img')
+                <p class="text-red-500 text-xs mt-2">{{$message}}</p>
+                @enderror
+            </div>
+            <div class="mb-6">
+                <label for="description"
+                    class="block mb-2 uppercase font-bold text-xs text-gray-700">Description</label>
+                <textarea name="description" id="description" rows="10"
+                    class="border border-gray-400 p-2 w-full">{{$user->description}}</textarea>
+                @error('description')
                 <p class="text-red-500 text-xs mt-2">{{$message}}</p>
                 @enderror
             </div>
