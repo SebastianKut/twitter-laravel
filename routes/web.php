@@ -35,6 +35,10 @@ Route::middleware('auth')->group(function () {
         ->middleware('can:follow,user');;
 
     Route::get('/explore', [App\Http\Controllers\ExploreController::class, 'index'])->name('explore');
+
+    Route::post('/tweet/{tweet}/like', [App\Http\Controllers\TweetLikesController::class, 'store'])->name('like/tweet');
+
+    Route::delete('/tweet/{tweet}/like', [App\Http\Controllers\TweetLikesController::class, 'destroy'])->name('dislike/tweet');
 });
 
 

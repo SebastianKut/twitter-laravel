@@ -4,7 +4,7 @@
         'user' => $user
         ])
         @include('_timeline', [
-        'tweets' => $user->tweets()->paginate(50),
+        'tweets' => $user->tweets()->withLikes()->paginate(50),
         ])
     </div>
 </x-app>

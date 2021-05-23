@@ -14,15 +14,7 @@
         <p class="text-sm">
             {{$tweet->body}}
         </p>
-        <div class="flex">
-            <div class="mr-4 text-xs {{$tweet->isLikedBy(auth()->user()) ? 'text-blue-500' : 'text-gray-500'}}">
-                <i class="far fa-thumbs-up"></i>
-                <span>{{$tweet->likes ?: '0'}}</span>
-            </div>
-            <div class="mr-4 text-xs {{$tweet->isDislikedBy(auth()->user()) ? 'text-blue-500' : 'text-gray-500'}}">
-                <i class="far fa-thumbs-down"></i>
-                <span>{{$tweet->dislikes ?: '0'}}</span>
-            </div>
-        </div>
+
+        <x-like-buttons :tweet="$tweet" />
     </div>
 </div>
