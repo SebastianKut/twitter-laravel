@@ -1,5 +1,6 @@
 # To add
 
+1. Add thumbnail of an image to publish tweet form so it displays it after adding
 2. Add the ability to attach an image when publishing a tweet.
 3. There is currently no way to unlike a tweet. Add the ability to toggle a like.
 4. Add a pop-up flash message when a user publishes a tweet or follows someone.

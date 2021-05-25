@@ -26,7 +26,7 @@ class TweetController extends Controller
         if (request('image')) {
             $validatedTweet['image'] = request('image')->store('tweets');
         } else {
-            $validatedTweet['image'] = '';
+            $validatedTweet['image'] = null;
         }
         //store to database
         Tweet::create([

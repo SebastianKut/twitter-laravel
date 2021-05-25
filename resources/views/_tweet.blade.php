@@ -14,10 +14,12 @@
         <p class="text-sm mb-2">
             {{$tweet->body}}
         </p>
-
+        @if ($tweet->image)
         <a href="{{$tweet->image}}">
-            <img class="{{$tweet->image ? 'h-32 mb-2' : 'h-0'}}" src="{{$tweet->image}}" alt="">
+            <img class="h-32 mb-2" src="{{$tweet->image}}" alt="">
         </a>
+        @endif
+
 
         <x-like-buttons :tweet="$tweet" />
     </div>
