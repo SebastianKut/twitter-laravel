@@ -6,14 +6,18 @@
     </div>
     <div>
         <a href="{{route('profile', $tweet->user->username)}}">
-            <h5 class="font-bold mb-4">
+            <h5 class="font-bold">
                 {{$tweet->user->name}}
             </h5>
         </a>
 
-        <p class="text-sm">
+        <p class="text-sm mb-2">
             {{$tweet->body}}
         </p>
+
+        <a href="{{$tweet->image}}">
+            <img class="{{$tweet->image ? 'h-32 mb-2' : 'h-0'}}" src="{{$tweet->image}}" alt="">
+        </a>
 
         <x-like-buttons :tweet="$tweet" />
     </div>

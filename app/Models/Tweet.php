@@ -10,7 +10,7 @@ class Tweet extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'body'];
+    protected $fillable = ['user_id', 'body', 'image'];
 
     //we can use local scope to dynamically build queries by creating public function scopeName($query) {}, then we can invoke it like Tweet::name()->get()
     //This scope will add likes and dislikes column so we can invke like this Tweet::withLikes()->first()
@@ -60,6 +60,14 @@ class Tweet extends Model
         );
     }
 
+    public function getImageAttribute($value)
+    {
+
+        if ($value) {
+            return asset('storage/' . $value);
+        }
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -95,5 +103,3 @@ class Tweet extends Model
         return (bool) $user->likes->where('tweet_id', $this->id)->where('liked', false)->count();
     }
 }
-
-//start from 22:45 mins video number 67

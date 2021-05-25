@@ -8,7 +8,7 @@ use App\Models\Tweet;
 class TweetController extends Controller
 {
 
-      public function index()
+    public function index()
     {
         return view('tweets.index', [
             'tweets' => auth()->user()->timeline()
@@ -19,13 +19,20 @@ class TweetController extends Controller
     {
         //validation
         $validatedTweet = request()->validate([
-            'body'  => ['required', 'max:255']
+            'body'       => ['required', 'max:255'],
+            'image'      => ['file'],
         ]);
 
+        if (request('image')) {
+            $validatedTweet['image'] = request('image')->store('tweets');
+        } else {
+            $validatedTweet['image'] = '';
+        }
         //store to database
         Tweet::create([
             'user_id'   => auth()->id(),
-            'body'      => $validatedTweet['body']
+            'body'      => $validatedTweet['body'],
+            'image'     => $validatedTweet['image'],
         ]);
 
         //redirect
