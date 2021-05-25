@@ -17,6 +17,7 @@ class Tweet extends Model
     //This way we can add to the standard columns in the table likes and dislikes colum using left join then query them in blade for example
 
     //$tweet = Tweet::withLikes()->first();
+    //in this example we call it withLikes() in User->timeline()
 
     //now we have access to all this
 
@@ -93,6 +94,11 @@ class Tweet extends Model
         return $this->like($user, false);
     }
 
+    public function deleteLikeRecord()
+    {
+        return $this->likes()->where('tweet_id', $this->id)->where('user_id', auth()->user()->id)->delete();
+    }
+
     public function isLikedBy(User $user)
     {
         return (bool) $user->likes->where('tweet_id', $this->id)->where('liked', true)->count();
@@ -101,5 +107,15 @@ class Tweet extends Model
     public function isDislikedBy(User $user)
     {
         return (bool) $user->likes->where('tweet_id', $this->id)->where('liked', false)->count();
+    }
+
+    public function toggleLike()
+    {
+        $this->isLikedBy(auth()->user()) ? $this->deleteLikeRecord() : $this->like(auth()->user());
+    }
+
+    public function toggleDislike()
+    {
+        $this->isDislikedBy(auth()->user()) ? $this->deleteLikeRecord() : $this->dislike(auth()->user());
     }
 }

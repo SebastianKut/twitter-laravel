@@ -31,8 +31,8 @@ class ProfileController extends Controller
             'name'              => ['string', 'required', 'max:255'],
             'username'          => ['string', 'required', 'max:255', 'alpha_dash', Rule::unique('users')->ignore($user)], //ignore current user because otherwise it will always fail validation when we dnt want to change username
             'email'             => ['string', 'required', 'email', 'max:255', Rule::unique('users')->ignore($user)],
-            'avatar'            => ['file'],
-            'background_img'    => ['file'],
+            'avatar'            => ['image'],
+            'background_img'    => ['image'],
             'description'       => ['string', 'max:255'],
             'password'          => ['string', 'required', 'min:8', 'max:255', 'confirmed'],
         ]);

@@ -20,7 +20,7 @@ class TweetController extends Controller
         //validation
         $validatedTweet = request()->validate([
             'body'       => ['required', 'max:255'],
-            'image'      => ['file'],
+            'image'      => ['image'],
         ]);
 
         if (request('image')) {

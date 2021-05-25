@@ -10,14 +10,14 @@ class TweetLikesController extends Controller
 {
     public function store(Tweet $tweet, User $user)
     {
-        $tweet->like($user->id);
+        $tweet->toggleLike($user->id);
 
         return back();
     }
 
     public function destroy(Tweet $tweet, User $user)
     {
-        $tweet->dislike($user->id);
+        $tweet->toggleDislike($user->id);
 
         return back();
     }

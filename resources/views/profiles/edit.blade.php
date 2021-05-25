@@ -29,7 +29,8 @@
             </div>
             <div class="mb-6">
                 <label for="avatar" class="block mb-2 uppercase font-bold text-xs text-gray-700">Avatar</label>
-                <input type="file" name="avatar" id="avatar" class="border border-gray-400 p-2 w-full">
+                <input type="file" accept=".png, .jpg, .jpeg" name="avatar" id="avatar"
+                    class="border border-gray-400 p-2 w-full">
                 @error('avatar')
                 <p class="text-red-500 text-xs mt-2">{{$message}}</p>
                 @enderror
@@ -37,7 +38,8 @@
             <div class="mb-6">
                 <label for="background_img" class="block mb-2 uppercase font-bold text-xs text-gray-700">Background
                     image</label>
-                <input type="file" name="background_img" id="background_img" class="border border-gray-400 p-2 w-full">
+                <input type="file" accept=".png, .jpg, .jpeg" name="background_img" id="background_img"
+                    class="border border-gray-400 p-2 w-full">
                 @error('background_img')
                 <p class="text-red-500 text-xs mt-2">{{$message}}</p>
                 @enderror

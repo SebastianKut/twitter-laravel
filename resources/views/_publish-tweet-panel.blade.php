@@ -12,7 +12,8 @@
             <div class="flex items-center">
                 <label for="image" class="uppercase font-bold text-sm text-gray-700 cursor-pointer">Add
                     image <i class="fas fa-plus-circle"></i></label>
-                <input type="file" name="image" id="image" class="border border-gray-400 p-2 w-full hidden">
+                <input type="file" accept=".png, .jpg, .jpeg" name="image" id="image"
+                    class="border border-gray-400 p-2 w-full hidden">
             </div>
             <button type="submit" class="bg-blue-500 rounded-lg shadow py-4 px-2 text-white">Send a
                 Tweet</button>
