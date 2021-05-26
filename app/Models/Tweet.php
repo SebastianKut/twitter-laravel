@@ -111,11 +111,24 @@ class Tweet extends Model
 
     public function toggleLike()
     {
-        $this->isLikedBy(auth()->user()) ? $this->deleteLikeRecord() : $this->like(auth()->user());
+        return $this->isLikedBy(auth()->user()) ? $this->deleteLikeRecord() : $this->like(auth()->user());
     }
 
     public function toggleDislike()
     {
-        $this->isDislikedBy(auth()->user()) ? $this->deleteLikeRecord() : $this->dislike(auth()->user());
+        return $this->isDislikedBy(auth()->user()) ? $this->deleteLikeRecord() : $this->dislike(auth()->user());
+    }
+
+    public function deleteTweet()
+    {
+        //find the tweet where tweet user id is current user id and delete
+        //the below retriews tweet from database making sure user id equals logged in user
+
+        // $tweet->where('id', $tweet->id)->where('user_id', auth()->user()->id)->delete();
+
+        //this one deletes tweet without retrieving from database but doesnt prevent from deleting all tweets of all users
+        //we use destroy instead of delete because we know models id so we do not have to query data base to find the right record
+
+        return $this->destroy($this->id);
     }
 }

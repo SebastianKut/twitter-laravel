@@ -36,6 +36,17 @@
             </button>
         </div>
         @endif
-
     </form>
+    @can('destroy', $tweet)
+    <form action="{{route('delete/tweet', $tweet->id)}}" method="POST">
+        @csrf
+        @method('DELETE')
+        <div class="mr-4 text-xs text-gray-500">
+            <button type="submit">
+                <i class="far fa-trash-alt"></i>
+                <span>Delete</span>
+            </button>
+        </div>
+    </form>
+    @endcan
 </div>

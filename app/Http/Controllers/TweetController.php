@@ -38,4 +38,11 @@ class TweetController extends Controller
         //redirect
         return redirect('/tweets');
     }
+
+    public function destroy(Tweet $tweet)
+    {
+        $tweet->deleteTweet();
+
+        return back();
+    }
 }

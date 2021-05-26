@@ -23,6 +23,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/tweets', [App\Http\Controllers\TweetController::class, 'index'])->name('home');
 
+    Route::delete('/tweet/{tweet}/delete', [App\Http\Controllers\TweetController::class, 'destroy'])->name('delete/tweet')
+        ->middleware('can:destroy,tweet');
+
     Route::get('/profile/{user:username}', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile');
 
     Route::get('/profile/{user:username}/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile/edit')
