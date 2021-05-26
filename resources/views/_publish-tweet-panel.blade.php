@@ -1,7 +1,7 @@
 <div class="border border-blue-400 rounded-lg mb-10 lg:mx-10 p-6">
     <form action="/tweets" method="POST" enctype="multipart/form-data">
         @csrf
-        <textarea name="body" required placeholder="What's on your mind?" class="w-full"></textarea>
+        <textarea name="body" required placeholder="What's on your mind?" class="w-full h-48"></textarea>
 
         <hr class="my-4">
 

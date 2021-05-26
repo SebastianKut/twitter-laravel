@@ -40,9 +40,16 @@
             @can('follow', $user)
             <form action="/profile/{{$user->username}}/follow" method="POST">
                 @csrf
-                <button type="submit" class="bg-blue-500 rounded-full shadow p-2 text-white text-xs">
-                    {{auth()->user()->isFollowing($user) ? 'Unfollow' : 'Follow'}}
+                @if (auth()->user()->isFollowing($user))
+                <button type="submit" class="bg-blue-500 rounded-full shadow p-2 text-white text-xs w-20">
+                    Unfollow
                 </button>
+                @else
+                <button type="submit" class="bg-white-500 rounded-full shadow p-2 text-black text-xs w-20">
+                    Follow
+                </button>
+                @endif
+
             </form>
             @endcan
 

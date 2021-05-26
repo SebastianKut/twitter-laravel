@@ -27,9 +27,10 @@
 </head>
 
 <body>
-    <div id="app" class="py-8 px-20">
-
-
+    <div id="app" class="py-8 px-20 relative">
+        <div class="absolute text-green-500" style="top: 0; right: 0; ">
+            <strong>{{ session()->get('message') }}</strong>
+        </div>
         {{$slot}}
 
     </div>

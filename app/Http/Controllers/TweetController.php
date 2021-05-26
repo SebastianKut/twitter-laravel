@@ -36,7 +36,7 @@ class TweetController extends Controller
         ]);
 
         //redirect
-        return redirect('/tweets');
+        return redirect('/tweets')->with('message', 'Your tweet is now live');
     }
 
     public function destroy(Tweet $tweet)
