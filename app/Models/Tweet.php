@@ -79,6 +79,11 @@ class Tweet extends Model
         return $this->hasMany(Like::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     // accepting user but not requiring it by assigning $user = null
     public function like($user = null, $liked = true)
     {

@@ -45,7 +45,7 @@
                     Unfollow
                 </button>
                 @else
-                <button type="submit" class="bg-white-500 rounded-full shadow p-2 text-black text-xs w-20">
+                <button type="submit" class="bg-white-500 rounded-full shadow p-2 text-blue-500 text-xs w-20">
                     Follow
                 </button>
                 @endif

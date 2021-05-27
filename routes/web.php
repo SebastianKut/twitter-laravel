@@ -42,8 +42,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/tweet/{tweet}/like', [App\Http\Controllers\TweetLikesController::class, 'store'])->name('like/tweet');
 
     Route::delete('/tweet/{tweet}/like', [App\Http\Controllers\TweetLikesController::class, 'destroy'])->name('dislike/tweet');
+
+    Route::post('/tweet/{tweet}/comment', [App\Http\Controllers\CommentController::class, 'store'])->name('make/comment');
+
+    Route::delete('/tweet/{comment}/comment', [App\Http\Controllers\CommentController::class, 'destroy'])->name('delete/comment')
+        ->middleware('can:destroy,comment');
 });
-
-
 
 Auth::routes();
