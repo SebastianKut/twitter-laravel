@@ -44,7 +44,6 @@
         <div class="mr-4 text-xs text-gray-500">
             <button type="submit">
                 <i class="far fa-trash-alt"></i>
-                <span>Delete</span>
             </button>
         </div>
     </form>
