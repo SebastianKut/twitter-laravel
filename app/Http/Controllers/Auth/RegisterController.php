@@ -38,6 +38,9 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        //if you want only authorized (logged in users to register new users )
+        // $this->middleware('auth');
+        //otherwise anyone can register with below
         $this->middleware('guest');
     }
 

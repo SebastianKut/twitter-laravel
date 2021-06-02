@@ -49,4 +49,11 @@ Route::middleware('auth')->group(function () {
         ->middleware('can:destroy,comment');
 });
 
-Auth::routes();
+Auth::routes([
+    // 'login'    => true,
+    // 'logout'   => true,
+    // 'register' => false,
+    // 'reset'    => true,   // for resetting passwords
+    // 'confirm'  => false,  // for additional password confirmations
+    // 'verify'   => false,  // for email verification
+]);
